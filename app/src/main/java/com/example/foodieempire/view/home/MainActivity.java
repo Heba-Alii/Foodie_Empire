@@ -1,4 +1,4 @@
-package com.example.foodieempire.view;
+package com.example.foodieempire.view.home;
 
 import androidx.appcompat.app.AppCompatActivity;
 
