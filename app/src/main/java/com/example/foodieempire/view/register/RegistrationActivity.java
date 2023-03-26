@@ -2,7 +2,9 @@ package com.example.foodieempire.view.register;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
 import android.view.View;
@@ -21,5 +23,8 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView(view);
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentRegisterContainerView);
         NavController navController = navHostFragment.getNavController();
+        setSupportActionBar(binding.toolBar);
+        NavigationUI.setupWithNavController(binding.toolBar, navController);
+
     }
 }
