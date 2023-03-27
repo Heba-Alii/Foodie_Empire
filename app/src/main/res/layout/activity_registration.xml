@@ -6,12 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".view.register.RegistrationActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tool_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentRegisterContainerView"
@@ -19,7 +13,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:defaultNavHost="true"
-        app:layout_constraintTop_toTopOf="@+id/tool_bar"
+        app:layout_constraintTop_toBottomOf="@id/tool_bar"
         app:navGraph="@navigation/register_nav"
         tools:layout_editor_absoluteX="1dp" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:contentInsetStartWithNavigation="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="@color/white" />
 </androidx.constraintlayout.widget.ConstraintLayout>
