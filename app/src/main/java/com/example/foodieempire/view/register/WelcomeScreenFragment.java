@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
@@ -35,5 +36,17 @@ public class WelcomeScreenFragment extends Fragment {
         SpannableString login = new SpannableString("Log In");
         login.setSpan(new UnderlineSpan(), 0, login.length(), 0);
         binding.login.setText(login);
+        binding.registerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(binding.getRoot()).navigate(R.id.action_welcomeScreenFragment_to_registerFragment);
+            }
+        });
+        binding.login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(binding.getRoot()).navigate(R.id.action_welcomeScreenFragment_to_loginFragment);
+            }
+        });
     }
 }
