@@ -10,15 +10,20 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.foodieempire.R;
 import com.example.foodieempire.databinding.ActivityRegistrationBinding;
+import com.example.foodieempire.view.home.MainActivity;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class RegistrationActivity extends AppCompatActivity {
     ActivityRegistrationBinding binding;
+    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,17 +31,18 @@ public class RegistrationActivity extends AppCompatActivity {
         binding = ActivityRegistrationBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentRegisterContainerView);
+        if (firebaseAuth.getCurrentUser() == null) {
 
-        assert navHostFragment != null;
-        NavController navController = navHostFragment.getNavController();
-        //AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        Toolbar toolbar = findViewById(R.id.tool_bar);
-        setSupportActionBar(toolbar);
-        // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        NavigationUI.setupActionBarWithNavController(this, navController);
+            NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentRegisterContainerView);
+            NavController navController = navHostFragment.getNavController();
+            Toolbar toolbar = findViewById(R.id.tool_bar);
+            setSupportActionBar(toolbar);
+            NavigationUI.setupActionBarWithNavController(this, navController);
 
-
+        } else {
+            startActivity(new Intent(RegistrationActivity.this, MainActivity.class));
+            finish();
+        }
     }
 
     @Override

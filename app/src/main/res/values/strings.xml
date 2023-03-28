@@ -16,4 +16,8 @@
     <string name="please_log_in_to_continue">Please log in to continue..</string>
     <string name="createAccount">Create an account</string>
     <string name="logIn">Log In</string>
+    <string name="home">Home</string>
+    <string name="favorites">Favorites</string>
+    <string name="search">Search</string>
+    <string name="profile">Profile</string>
 </resources>

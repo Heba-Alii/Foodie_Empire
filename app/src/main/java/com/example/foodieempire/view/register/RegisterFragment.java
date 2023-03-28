@@ -53,7 +53,6 @@ public class RegisterFragment extends Fragment {
             }
         });
 
-
     }
 
     private void addToFirebaseAuth(String mail, String pass) {
@@ -64,13 +63,12 @@ public class RegisterFragment extends Fragment {
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if (task.isSuccessful()) {
-                            Navigation.findNavController(binding.getRoot()).navigate(R.id.action_registerFragment_to_loginFragment);
-
+                            Navigation.findNavController(binding.getRoot()).navigate(R.id.action_registerFragment_to_mainActivity);
+                            getActivity().finish();
                         } else {
                             Log.d("TAG", "onComplete: " + task.getException().getMessage());
                             Toast.makeText(getActivity(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
-
                     }
                 });
     }

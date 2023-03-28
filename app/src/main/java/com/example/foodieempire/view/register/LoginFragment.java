@@ -54,7 +54,8 @@ public class LoginFragment extends Fragment {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    Navigation.findNavController(binding.getRoot()).navigate(R.id.action_loginFragment_to_registerFragment);
+                    Navigation.findNavController(binding.getRoot()).navigate(R.id.action_loginFragment_to_mainActivity);
+                    getActivity().finish();
                 } else {
                     Toast.makeText(getActivity(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }

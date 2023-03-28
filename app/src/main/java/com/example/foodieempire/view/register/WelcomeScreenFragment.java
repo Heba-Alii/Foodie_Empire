@@ -15,11 +15,11 @@ import android.view.ViewGroup;
 
 import com.example.foodieempire.R;
 import com.example.foodieempire.databinding.FragmentWelcomeScreenBinding;
+import com.google.firebase.auth.FirebaseAuth;
 
 
 public class WelcomeScreenFragment extends Fragment {
     FragmentWelcomeScreenBinding binding;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
