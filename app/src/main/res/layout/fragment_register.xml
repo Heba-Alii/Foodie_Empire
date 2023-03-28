@@ -8,7 +8,7 @@
     tools:context=".view.register.RegisterFragment">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/name_ET"
+
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,12 +20,12 @@
         app:startIconDrawable="@drawable/person">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name_ET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/mail_ET"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,12 +37,13 @@
         app:startIconDrawable="@drawable/email">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/mail_ET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/pass_ET"
+
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -55,6 +56,7 @@
         app:startIconDrawable="@drawable/pass">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pass_ET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>

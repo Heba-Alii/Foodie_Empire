@@ -39,7 +39,8 @@ public class WelcomeScreenFragment extends Fragment {
         binding.registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(binding.getRoot()).navigate(R.id.action_welcomeScreenFragment_to_registerFragment);
+                Navigation.findNavController(binding.getRoot()).
+                        navigate(R.id.action_welcomeScreenFragment_to_registerFragment);
             }
         });
         binding.login.setOnClickListener(new View.OnClickListener() {

@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,21 +43,39 @@ public class RegisterFragment extends Fragment {
         binding.registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                firebaseAuth.createUserWithEmailAndPassword(Objects.requireNonNull(binding.mailET.getEditText()).getText().toString(), Objects.requireNonNull(binding.passET.getEditText()).getText().toString())
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    Navigation.findNavController(binding.getRoot()).navigate(R.id.action_registerFragment_to_loginFragment);
-                                } else {
-                                    Toast.makeText(getActivity(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                }
-
-                            }
-                        });
+                String name = binding.nameET.getText().toString();
+                String mail = binding.mailET.getText().toString();
+                String pass = binding.passET.getText().toString();
+                if (isDataNotValid(name, mail, pass)) {
+                    Toast.makeText(getActivity(), "Complete Your Data Please", Toast.LENGTH_SHORT).show();
+                } else
+                    addToFirebaseAuth(mail, pass);
             }
         });
 
 
+    }
+
+    private void addToFirebaseAuth(String mail, String pass) {
+        firebaseAuth.createUserWithEmailAndPassword(mail, pass)
+
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        if (task.isSuccessful()) {
+                            Navigation.findNavController(binding.getRoot()).navigate(R.id.action_registerFragment_to_loginFragment);
+
+                        } else {
+                            Log.d("TAG", "onComplete: " + task.getException().getMessage());
+                            Toast.makeText(getActivity(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
+    }
+
+    private boolean isDataNotValid(String name, String mail, String pass) {
+        return name.isEmpty() || mail.isEmpty() || pass.isEmpty();
     }
 }
