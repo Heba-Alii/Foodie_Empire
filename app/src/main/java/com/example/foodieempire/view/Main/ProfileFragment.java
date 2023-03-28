@@ -1,4 +1,4 @@
-package com.example.foodieempire.view.home;
+package com.example.foodieempire.view.Main;
 
 import android.os.Bundle;
 

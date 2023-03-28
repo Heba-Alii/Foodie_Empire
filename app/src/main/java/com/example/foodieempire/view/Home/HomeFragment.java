@@ -1,4 +1,4 @@
-package com.example.foodieempire.view.home;
+package com.example.foodieempire.view.Home;
 
 import android.os.Bundle;
 
@@ -14,7 +14,6 @@ import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.foodieempire.R;
 import com.example.foodieempire.databinding.FragmentHomeBinding;
-import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
