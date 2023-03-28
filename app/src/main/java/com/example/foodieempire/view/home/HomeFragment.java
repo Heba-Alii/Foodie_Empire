@@ -10,15 +10,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.foodieempire.R;
 import com.example.foodieempire.databinding.FragmentHomeBinding;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.ArrayList;
 
 
 public class HomeFragment extends Fragment {
 
     FragmentHomeBinding binding;
-    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,6 +35,14 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        ArrayList<SlideModel> slideModels = new ArrayList<>();
+        slideModels.add(new SlideModel(R.drawable.firstphoto, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.secondphoto, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.thirdphot, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.fourthphot, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.fifthphoto, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.sixthphoto, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.sevenphot, ScaleTypes.FIT));
+        binding.imageSlider.setImageList(slideModels, ScaleTypes.FIT);
     }
 }
