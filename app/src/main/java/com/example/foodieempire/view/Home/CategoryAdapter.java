@@ -38,7 +38,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         holder.textView.setText(category.getStrCategory());
         Glide.with(holder.itemView)
                 .load(category.getStrCategoryThumb()).
-                placeholder(R.drawable.firstphoto)
+                placeholder(R.drawable.logo)
                 .fitCenter()
                 .into(holder.circleImageView);
 
