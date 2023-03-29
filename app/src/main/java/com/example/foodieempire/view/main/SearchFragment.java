@@ -1,4 +1,4 @@
-package com.example.foodieempire.view.Main;
+package com.example.foodieempire.view.main;
 
 import android.os.Bundle;
 
@@ -11,17 +11,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.foodieempire.R;
-import com.example.foodieempire.databinding.FragmentFavoritesBinding;
+import com.example.foodieempire.databinding.FragmentSearchBinding;
 
-public class FavoritesFragment extends Fragment {
 
-    FragmentFavoritesBinding binding;
+public class SearchFragment extends Fragment {
+    FragmentSearchBinding binding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View favoriteFragment = inflater.inflate(R.layout.fragment_favorites, container, false);
-        binding = FragmentFavoritesBinding.bind(favoriteFragment);
+        View searchFragment = inflater.inflate(R.layout.fragment_search, container, false);
+        binding = FragmentSearchBinding.bind(searchFragment);
         return binding.getRoot();
     }
 

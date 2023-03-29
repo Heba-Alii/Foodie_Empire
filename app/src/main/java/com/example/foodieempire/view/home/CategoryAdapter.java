@@ -1,4 +1,4 @@
-package com.example.foodieempire.view.Home;
+package com.example.foodieempire.view.home;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +14,6 @@ import com.example.foodieempire.R;
 import com.example.foodieempire.model.pojo.Category;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 

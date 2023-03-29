@@ -1,4 +1,4 @@
-package com.example.foodieempire.view.Main;
+package com.example.foodieempire.view.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;

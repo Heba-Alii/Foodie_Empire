@@ -14,7 +14,7 @@ import android.view.View;
 
 import com.example.foodieempire.R;
 import com.example.foodieempire.databinding.ActivityRegistrationBinding;
-import com.example.foodieempire.view.Main.MainActivity;
+import com.example.foodieempire.view.main.MainActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class RegistrationActivity extends AppCompatActivity {
