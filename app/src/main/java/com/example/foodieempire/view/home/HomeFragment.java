@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.view.LayoutInflater;
@@ -22,7 +23,7 @@ import com.example.foodieempire.model.pojo.Category;
 import java.util.ArrayList;
 
 
-public class HomeFragment extends Fragment implements CategoryCallback {
+public class HomeFragment extends Fragment implements CategoryCallback, StrCategoryIntrface {
 
     FragmentHomeBinding binding;
 
@@ -45,14 +46,21 @@ public class HomeFragment extends Fragment implements CategoryCallback {
         slideModels.add(new SlideModel(R.drawable.meals, ScaleTypes.FIT));
         slideModels.add(new SlideModel(R.drawable.categories, ScaleTypes.FIT));
         binding.imageSlider.setImageList(slideModels, ScaleTypes.FIT);
-        AppController appController=new AppController(HomeFragment.this);
+        AppController appController = new AppController(HomeFragment.this);
         appController.getAllCategory();
     }
 
     @Override
     public void getCategories(ArrayList<Category> categories) {
-        CategoryAdapter categoryAdapter = new CategoryAdapter(categories);
+        CategoryAdapter categoryAdapter = new CategoryAdapter(categories, HomeFragment.this);
         binding.homeRecycler.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         binding.homeRecycler.setAdapter(categoryAdapter);
+    }
+
+    @Override
+    public void getStrCategory(String categoryName) {
+        Bundle bundle = new Bundle();
+        bundle.putString("strCategory", categoryName);
+        Navigation.findNavController(binding.getRoot()).navigate(R.id.action_homeFragment_to_mealsFragment, bundle);
     }
 }

@@ -19,9 +19,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
     ArrayList<Category> categories;
+    private StrCategoryIntrface strCategoryIntrface;
 
-    public CategoryAdapter(ArrayList<Category> categories) {
+    public CategoryAdapter(ArrayList<Category> categories, StrCategoryIntrface strCategoryIntrface) {
         this.categories = categories;
+        this.strCategoryIntrface = strCategoryIntrface;
     }
 
     @NonNull
@@ -40,6 +42,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
                 placeholder(R.drawable.logo)
                 .fitCenter()
                 .into(holder.circleImageView);
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                strCategoryIntrface.getStrCategory(category.getStrCategory());
+            }
+        });
 
     }
 

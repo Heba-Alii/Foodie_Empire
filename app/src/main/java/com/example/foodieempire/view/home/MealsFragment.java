@@ -2,65 +2,48 @@ package com.example.foodieempire.view.home;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.foodieempire.R;
+import com.example.foodieempire.controller.AppController;
+import com.example.foodieempire.controller.MealsCallBack;
+import com.example.foodieempire.databinding.FragmentMealsBinding;
+import com.example.foodieempire.model.pojo.Meal;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MealsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class MealsFragment extends Fragment {
+import java.util.ArrayList;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+public class MealsFragment extends Fragment implements MealsCallBack {
+    FragmentMealsBinding binding;
 
-    public MealsFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MealsFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static MealsFragment newInstance(String param1, String param2) {
-        MealsFragment fragment = new MealsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_meals, container, false);
+        View mealsFragment = inflater.inflate(R.layout.fragment_meals, container, false);
+        binding = FragmentMealsBinding.bind(mealsFragment);
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        String strCategory = getArguments().getString("strCategory", "");
+        AppController appController = new AppController(MealsFragment.this);
+        appController.getAllMeals(strCategory);
+    }
+
+    @Override
+    public void getMeals(ArrayList<Meal> meals) {
+        MealsAdapter mealsAdapter = new MealsAdapter(meals);
+        binding.homeRecycler.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        binding.homeRecycler.setAdapter(mealsAdapter);
     }
 }
