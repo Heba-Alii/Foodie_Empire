@@ -20,9 +20,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MealsAdapter extends RecyclerView.Adapter<MealsAdapter.ViewHolder> {
     ArrayList<Meal> meals;
+    FavotiteInterface favotiteInterface;
 
-    public MealsAdapter(ArrayList<Meal> meals) {
+    public MealsAdapter(ArrayList<Meal> meals, FavotiteInterface favotiteInterface) {
         this.meals = meals;
+        this.favotiteInterface = favotiteInterface;
     }
 
     @NonNull
@@ -41,6 +43,13 @@ public class MealsAdapter extends RecyclerView.Adapter<MealsAdapter.ViewHolder> 
                 .placeholder(R.drawable.logo)
                 .fitCenter()
                 .into(holder.circle_image_meal);
+        holder.fav_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                holder.fav_icon.setImageResource(R.drawable.red_fav);
+                favotiteInterface.addToFav(meal);
+            }
+        });
 
     }
 

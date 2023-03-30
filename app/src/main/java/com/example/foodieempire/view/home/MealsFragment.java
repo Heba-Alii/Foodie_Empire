@@ -20,7 +20,7 @@ import com.example.foodieempire.model.pojo.Meal;
 import java.util.ArrayList;
 
 
-public class MealsFragment extends Fragment implements MealsCallBack {
+public class MealsFragment extends Fragment implements MealsCallBack, FavotiteInterface {
     FragmentMealsBinding binding;
 
 
@@ -42,8 +42,13 @@ public class MealsFragment extends Fragment implements MealsCallBack {
 
     @Override
     public void getMeals(ArrayList<Meal> meals) {
-        MealsAdapter mealsAdapter = new MealsAdapter(meals);
+        MealsAdapter mealsAdapter = new MealsAdapter(meals, MealsFragment.this);
         binding.homeRecycler.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         binding.homeRecycler.setAdapter(mealsAdapter);
+    }
+
+    @Override
+    public void addToFav(Meal meal) {
+//create room data base
     }
 }
