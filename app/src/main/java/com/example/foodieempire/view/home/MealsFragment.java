@@ -5,19 +5,23 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.foodieempire.R;
 import com.example.foodieempire.controller.AppController;
+import com.example.foodieempire.controller.LocalBuilder;
 import com.example.foodieempire.controller.MealsCallBack;
 import com.example.foodieempire.databinding.FragmentMealsBinding;
 import com.example.foodieempire.model.pojo.Meal;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class MealsFragment extends Fragment implements MealsCallBack, FavotiteInterface {
@@ -38,6 +42,7 @@ public class MealsFragment extends Fragment implements MealsCallBack, FavotiteIn
         String strCategory = getArguments().getString("strCategory", "");
         AppController appController = new AppController(MealsFragment.this);
         appController.getAllMeals(strCategory);
+
     }
 
     @Override
@@ -49,6 +54,12 @@ public class MealsFragment extends Fragment implements MealsCallBack, FavotiteIn
 
     @Override
     public void addToFav(Meal meal) {
-//create room data base
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                LocalBuilder localBuilder = LocalBuilder.getInstance(getActivity());
+                localBuilder.mealsDao().insertFavMeals(meal);
+            }
+        }).start();
     }
 }

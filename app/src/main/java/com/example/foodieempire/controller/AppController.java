@@ -5,7 +5,11 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.foodieempire.model.pojo.CategoryRoot;
+import com.example.foodieempire.model.pojo.Meal;
 import com.example.foodieempire.model.pojo.MealRoot;
+import com.example.foodieempire.view.home.FavotiteInterface;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -15,13 +19,16 @@ public class AppController {
     CategoryCallback categoryCallback;
     MealsCallBack mealsCallBack;
 
-    public AppController(CategoryCallback categoryCallback) {
-        this.categoryCallback = categoryCallback;
-    }
+
 
     public AppController(MealsCallBack mealsCallBack) {
         this.mealsCallBack = mealsCallBack;
     }
+
+    public AppController(CategoryCallback categoryCallback) {
+        this.categoryCallback = categoryCallback;
+    }
+
 
     public void getAllCategory() {
         Call<CategoryRoot> call = AppRetrofit.getInstance().getApiInterface().getAllCategory();
@@ -53,4 +60,6 @@ public class AppController {
             }
         });
     }
+
+
 }

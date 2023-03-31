@@ -1,11 +1,19 @@
 package com.example.foodieempire.model.pojo;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.io.Serializable;
 
+@Entity(tableName = "meals_table")
 public class Meal implements Serializable {
+    @NonNull
+    @PrimaryKey
+    private String idMeal;
     private String strMeal;
     private String strMealThumb;
-    private String idMeal;
+
 
     public Meal(String strMeal, String strMealThumb, String idMeal) {
         this.strMeal = strMeal;
