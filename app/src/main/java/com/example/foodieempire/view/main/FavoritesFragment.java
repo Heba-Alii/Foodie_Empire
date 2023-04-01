@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.foodieempire.R;
-import com.example.foodieempire.controller.AppController;
 import com.example.foodieempire.controller.LocalBuilder;
 import com.example.foodieempire.databinding.FragmentFavoritesBinding;
 import com.example.foodieempire.model.pojo.Meal;
@@ -24,7 +23,7 @@ import java.util.List;
 public class FavoritesFragment extends Fragment {
 
     FragmentFavoritesBinding binding;
-    List<Meal> meals = new ArrayList<>();
+    List<Meal> meal = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,17 +36,18 @@ public class FavoritesFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         new Thread(new Runnable() {
             @Override
             public void run() {
                 LocalBuilder localBuilder = LocalBuilder.getInstance(getActivity());
-                meals=localBuilder.mealsDao().getAllFavMeals();
+                meal = localBuilder.mealsDao().getAllFavMeals();
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        FavoritesAdapter favoritesAdapter=new FavoritesAdapter(meals);
+                        FavoritesAdapter favoritesAdapter = new FavoritesAdapter(meal);
                         binding.favRecycler.setLayoutManager(new
-                                GridLayoutManager(getActivity(),2));
+                                GridLayoutManager(getActivity(), 2));
                         binding.favRecycler.setAdapter(favoritesAdapter);
                     }
                 });
@@ -55,4 +55,6 @@ public class FavoritesFragment extends Fragment {
         }).start();
 
     }
+
+
 }

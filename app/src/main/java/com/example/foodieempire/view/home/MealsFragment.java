@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MealsFragment extends Fragment implements MealsCallBack, FavotiteInterface {
+public class MealsFragment extends Fragment implements MealsCallBack, FavotiteInterface, MealIDInterface {
     FragmentMealsBinding binding;
 
 
@@ -43,11 +43,12 @@ public class MealsFragment extends Fragment implements MealsCallBack, FavotiteIn
         AppController appController = new AppController(MealsFragment.this);
         appController.getAllMeals(strCategory);
 
+
     }
 
     @Override
     public void getMeals(ArrayList<Meal> meals) {
-        MealsAdapter mealsAdapter = new MealsAdapter(meals, MealsFragment.this);
+        MealsAdapter mealsAdapter = new MealsAdapter(meals, MealsFragment.this, MealsFragment.this);
         binding.homeRecycler.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         binding.homeRecycler.setAdapter(mealsAdapter);
     }
@@ -61,5 +62,34 @@ public class MealsFragment extends Fragment implements MealsCallBack, FavotiteIn
                 localBuilder.mealsDao().insertFavMeals(meal);
             }
         }).start();
+
     }
+
+    @Override
+    public void getMailId(String mailId) {
+        Bundle bundle = new Bundle();
+      bundle.putString("mealId",mailId);
+        Log.e("TAG", "getMailId: "+mailId );
+        Navigation.findNavController(binding.getRoot()).navigate(R.id.action_mealsFragment_to_detailsFragment, bundle);
+    }
+
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//       new Thread(new Runnable() {
+//           @Override
+//           public void run() {
+//               LocalBuilder localBuilder=LocalBuilder.getInstance(getActivity());
+//               localBuilder.mealsDao().getAllFavMeals();
+//               getActivity().runOnUiThread(new Runnable() {
+//                   @Override
+//                   public void run() {
+//                       MealsAdapter mealsAdapter = new MealsAdapter(m, MealsFragment.this);
+//                       binding.homeRecycler.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+//                       binding.homeRecycler.setAdapter(mealsAdapter);
+//                   }
+//               });
+//           }
+//       }).start();
+//    }
 }

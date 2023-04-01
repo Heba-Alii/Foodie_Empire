@@ -12,19 +12,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.foodieempire.R;
+import com.example.foodieempire.controller.LocalBuilder;
 import com.example.foodieempire.model.pojo.Meal;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MealsAdapter extends RecyclerView.Adapter<MealsAdapter.ViewHolder> {
     ArrayList<Meal> meals;
     FavotiteInterface favotiteInterface;
+    MealIDInterface mealIDInterface;
 
-    public MealsAdapter(ArrayList<Meal> meals, FavotiteInterface favotiteInterface) {
+    public MealsAdapter(ArrayList<Meal> meals, FavotiteInterface favotiteInterface, MealIDInterface mealIDInterface) {
         this.meals = meals;
         this.favotiteInterface = favotiteInterface;
+        this.mealIDInterface = mealIDInterface;
     }
 
     @NonNull
@@ -43,14 +47,24 @@ public class MealsAdapter extends RecyclerView.Adapter<MealsAdapter.ViewHolder> 
                 .placeholder(R.drawable.logo)
                 .fitCenter()
                 .into(holder.circle_image_meal);
+        holder.fav_icon.setImageResource(R.drawable.meal_fav);
+
         holder.fav_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                holder.fav_icon.setImageResource(R.drawable.red_fav);
                 favotiteInterface.addToFav(meal);
+                holder.fav_icon.setImageResource(R.drawable.red_fav);
+
+
             }
         });
 
+        holder.meal_card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mealIDInterface.getMailId(meal.getIdMeal());
+            }
+        });
     }
 
     @Override

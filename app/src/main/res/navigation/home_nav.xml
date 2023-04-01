@@ -13,6 +13,7 @@
         <action
             android:id="@+id/action_homeFragment_to_mealsFragment"
             app:destination="@id/mealsFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
@@ -45,4 +46,5 @@
             app:destination="@id/detailsFragment" />
 
     </fragment>
+
 </navigation>

@@ -28,20 +28,7 @@ public abstract class LocalBuilder extends RoomDatabase {
         return dbInstance;
     }
 
-    @Override
-    public void clearAllTables() {
-    }
 
-    @NonNull
-    @Override
-    protected InvalidationTracker createInvalidationTracker() {
-        return null;
-    }
 
-    @NonNull
-    @Override
-    protected SupportSQLiteOpenHelper createOpenHelper
-            (@NonNull DatabaseConfiguration databaseConfiguration) {
-        return null;
-    }
+
 }

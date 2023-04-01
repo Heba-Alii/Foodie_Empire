@@ -2,6 +2,7 @@ package com.example.foodieempire.model.pojo;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
@@ -15,7 +16,8 @@ public class Meal implements Serializable {
     private String strMealThumb;
 
 
-    public Meal(String strMeal, String strMealThumb, String idMeal) {
+
+    public Meal(String strMeal, String strMealThumb, @NonNull String idMeal) {
         this.strMeal = strMeal;
         this.strMealThumb = strMealThumb;
         this.idMeal = idMeal;
@@ -37,6 +39,7 @@ public class Meal implements Serializable {
         this.strMealThumb = strMealThumb;
     }
 
+    @NonNull
     public String getIdMeal() {
         return idMeal;
     }

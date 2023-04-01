@@ -2,120 +2,49 @@ package com.example.foodieempire.view.home;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.foodieempire.R;
+import com.example.foodieempire.controller.AppController;
+import com.example.foodieempire.controller.MealDetailsCallback;
+import com.example.foodieempire.databinding.FragmentDetailsBinding;
+import com.example.foodieempire.model.pojo.Details;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link DetailsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class DetailsFragment extends Fragment {
+import java.util.ArrayList;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class DetailsFragment extends Fragment implements MealDetailsCallback {
+    FragmentDetailsBinding binding;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public DetailsFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment DetailsFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static DetailsFragment newInstance(String param1, String param2) {
-        DetailsFragment fragment = new DetailsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_details, container, false);
+        View detailsFragment = inflater.inflate(R.layout.fragment_details, container, false);
+        binding = FragmentDetailsBinding.bind(detailsFragment);
+        return binding.getRoot();
     }
 
-    /**
-     * A simple {@link Fragment} subclass.
-     * Use the {@link MealsFragment#newInstance} factory method to
-     * create an instance of this fragment.
-     */
-    public static class MealsFragment extends Fragment {
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        AppController appController = new AppController(DetailsFragment.this);
+        String idMeal = getArguments().getString("mealId", "gtg");
 
-        // TODO: Rename parameter arguments, choose names that match
-        // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-        private static final String ARG_PARAM1 = "param1";
-        private static final String ARG_PARAM2 = "param2";
+        appController.getMealDetails(idMeal);
+    }
 
-        // TODO: Rename and change types of parameters
-        private String mParam1;
-        private String mParam2;
 
-        public MealsFragment() {
-            // Required empty public constructor
-        }
-
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MealsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        public static MealsFragment newInstance(String param1, String param2) {
-            MealsFragment fragment = new MealsFragment();
-            Bundle args = new Bundle();
-            args.putString(ARG_PARAM1, param1);
-            args.putString(ARG_PARAM2, param2);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            if (getArguments() != null) {
-                mParam1 = getArguments().getString(ARG_PARAM1);
-                mParam2 = getArguments().getString(ARG_PARAM2);
-            }
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            // Inflate the layout for this fragment
-            return inflater.inflate(R.layout.fragment_meals, container, false);
-        }
+    @Override
+    public void getDetails(Details details) {
+        binding.mealDetailsText.setText(details.getStrMeal());
+        binding.descDetails.setText(details.getStrInstructions());
+        binding.ingredientOne.setText(details.getStrIngredient1());
     }
 }
