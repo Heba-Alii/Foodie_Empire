@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
 import com.example.foodieempire.R;
 import com.example.foodieempire.controller.AppController;
 import com.example.foodieempire.controller.MealDetailsCallback;
@@ -42,9 +43,21 @@ public class DetailsFragment extends Fragment implements MealDetailsCallback {
 
 
     @Override
-    public void getDetails(Details details) {
-        binding.mealDetailsText.setText(details.getStrMeal());
-        binding.descDetails.setText(details.getStrInstructions());
-        binding.ingredientOne.setText(details.getStrIngredient1());
+    public void getDetails(ArrayList<Details> details) {
+        binding.mealDetailsText.setText(details.get(0).getStrMeal());
+        binding.descDetails.setText(details.get(0).getStrInstructions());
+        Glide.with(getActivity()).load(details.get(0).getStrMealThumb()).into(binding.mealDetailsImage);
+        binding.ingredientOne.setText(details.get(0).getStrIngredient1());
+        binding.measureOne.setText(details.get(0).getStrMeasure1());
+        binding.ingredientTwo.setText(details.get(0).getStrIngredient2());
+        binding.measureTwo.setText(details.get(0).getStrMeasure2());
+        binding.ingredientThree.setText(details.get(0).getStrIngredient3());
+        binding.measureThree.setText(details.get(0).getStrMeasure3());
+        binding.ingredientFour.setText(details.get(0).getStrIngredient4());
+        binding.measureFour.setText(details.get(0).getStrMeasure4());
+        binding.ingredientFive.setText(details.get(0).getStrIngredient5());
+        binding.measureFive.setText(details.get(0).getStrMeasure5());
+
+
     }
 }

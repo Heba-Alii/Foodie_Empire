@@ -5,9 +5,7 @@ import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 
-public class Details{
-    @NonNull
-    @PrimaryKey
+public class Details {
     private String idMeal;
     private String strMeal;
     private Object strDrinkAlternate;

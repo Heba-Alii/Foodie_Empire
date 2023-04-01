@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,183 +7,192 @@
     android:background="@color/teal_700"
     tools:context=".view.home.DetailsFragment">
 
-    <ImageView
-        android:id="@+id/meal_details_image"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_margin="10dp"
-        android:src="@drawable/logo"
-        android:background="@drawable/custom_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/meal_details_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/meal_details_image" />
+        <ImageView
+            android:id="@+id/meal_details_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
 
-    <TextView
-        android:id="@+id/ingredient_details"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/custom_btn"
-        android:padding="10dp"
-        android:text="@string/ingredients"
-        android:textColor="@color/teal_700"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/meal_details_text"
-        app:layout_constraintTop_toBottomOf="@+id/meal_details_text" />
+            android:scaleType="fitXY"
+            android:src="@drawable/logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/ingredient_one"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Avocado"
-        android:textColor="@color/white"
-        android:textSize="17sp"
-        app:layout_constraintStart_toStartOf="@id/ingredient_details"
-        app:layout_constraintTop_toBottomOf="@id/ingredient_details" />
+        <TextView
+            android:id="@+id/meal_details_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/meal_details_image" />
 
-    <TextView
-        android:id="@+id/measure_one"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:text="cup"
-        android:textColor="@color/white"
-        android:textSize="17sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ingredient_details" />
+        <TextView
+            android:id="@+id/ingredient_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/custom_btn"
+            android:padding="10dp"
+            android:text="@string/ingredients"
+            android:textColor="@color/teal_700"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/meal_details_text"
+            app:layout_constraintTop_toBottomOf="@+id/meal_details_text" />
 
-    <TextView
-        android:id="@+id/ingredient_two"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Avocado"
-        android:textColor="@color/white"
-        android:textSize="17sp"
-        app:layout_constraintStart_toStartOf="@id/ingredient_details"
-        app:layout_constraintTop_toBottomOf="@id/ingredient_one" />
+        <TextView
+            android:id="@+id/ingredient_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Avocado"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="@id/ingredient_details"
+            app:layout_constraintTop_toBottomOf="@id/ingredient_details" />
 
-    <TextView
-        android:id="@+id/measure_two"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:text="cup"
-        android:textColor="@color/white"
-        android:textSize="17sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/measure_one" />
+        <TextView
+            android:id="@+id/measure_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="cup"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ingredient_details" />
 
-    <TextView
-        android:id="@+id/ingredient_three"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Avocado"
-        android:textColor="@color/white"
-        android:textSize="17sp"
-        app:layout_constraintStart_toStartOf="@id/ingredient_details"
-        app:layout_constraintTop_toBottomOf="@id/ingredient_two" />
+        <TextView
+            android:id="@+id/ingredient_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Avocado"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="@id/ingredient_details"
+            app:layout_constraintTop_toBottomOf="@id/ingredient_one" />
 
-    <TextView
-        android:id="@+id/measure_three"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:text="cup"
-        android:textColor="@color/white"
-        android:textSize="17sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/measure_two" />
+        <TextView
+            android:id="@+id/measure_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="cup"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/measure_one" />
 
-    <TextView
-        android:id="@+id/ingredient_four"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Avocado"
-        android:textColor="@color/white"
-        android:textSize="17sp"
-        app:layout_constraintStart_toStartOf="@id/ingredient_details"
-        app:layout_constraintTop_toBottomOf="@id/ingredient_three" />
+        <TextView
+            android:id="@+id/ingredient_three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Avocado"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="@id/ingredient_details"
+            app:layout_constraintTop_toBottomOf="@id/ingredient_two" />
 
-    <TextView
-        android:id="@+id/measure_four"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:text="cup"
-        android:textColor="@color/white"
-        android:textSize="17sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/measure_three" />
+        <TextView
+            android:id="@+id/measure_three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="cup"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/measure_two" />
 
-    <TextView
-        android:id="@+id/ingredient_five"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Avocado"
-        android:textColor="@color/white"
-        android:textSize="17sp"
-        app:layout_constraintStart_toStartOf="@id/ingredient_details"
-        app:layout_constraintTop_toBottomOf="@id/ingredient_four" />
+        <TextView
+            android:id="@+id/ingredient_four"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Avocado"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="@id/ingredient_details"
+            app:layout_constraintTop_toBottomOf="@id/ingredient_three" />
 
-    <TextView
-        android:id="@+id/measure_five"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:text="cup"
-        android:textColor="@color/white"
-        android:textSize="17sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/measure_four" />
+        <TextView
+            android:id="@+id/measure_four"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="cup"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/measure_three" />
 
-    <TextView
-        android:id="@+id/steps_details"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/custom_btn"
-        android:padding="10dp"
-        android:text="Steps"
-        android:textColor="@color/teal_700"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/meal_details_text"
-        app:layout_constraintTop_toBottomOf="@+id/ingredient_five" />
+        <TextView
+            android:id="@+id/ingredient_five"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Avocado"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="@id/ingredient_details"
+            app:layout_constraintTop_toBottomOf="@id/ingredient_four" />
 
-    <TextView
-        android:id="@+id/desc_details"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:text="Avocado"
-        android:textColor="@color/white"
-        android:textSize="17sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/ingredient_details"
-        app:layout_constraintTop_toBottomOf="@id/steps_details" />
+        <TextView
+            android:id="@+id/measure_five"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="cup"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/measure_four" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/steps_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/custom_btn"
+            android:padding="10dp"
+            android:text="Steps"
+            android:textColor="@color/teal_700"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/meal_details_text"
+            app:layout_constraintTop_toBottomOf="@+id/ingredient_five" />
+
+        <TextView
+            android:id="@+id/desc_details"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="60dp"
+            android:text="Avocado"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/ingredient_details"
+            app:layout_constraintTop_toBottomOf="@id/steps_details" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+

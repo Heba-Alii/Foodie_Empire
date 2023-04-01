@@ -69,21 +69,20 @@ public class AppController {
     }
 
     public void getMealDetails(String mealId) {
-        Call<Details> call = AppRetrofit.getInstance().getApiInterface().getMealDetails(mealId);
-        call.enqueue(new Callback<Details>() {
+        Call<DetailsRoot> call = AppRetrofit.getInstance().getApiInterface().getMealDetails(mealId);
+        call.enqueue(new Callback<DetailsRoot>() {
             @Override
-            public void onResponse(Call<Details> call, Response<Details> response) {
+            public void onResponse(Call<DetailsRoot> call, Response<DetailsRoot> response) {
 
                 if (response.isSuccessful()) {
-                    mealDetailsCallback.getDetails(response.body());
+                    mealDetailsCallback.getDetails(response.body().getMeals());
                 } else {
                     Log.e("TAG", "onResponse: " + response.message());
                 }
-                Log.e("TAG", "onResponsedetails: " + response.body().getStrMeal());
             }
 
             @Override
-            public void onFailure(Call<Details> call, Throwable t) {
+            public void onFailure(Call<DetailsRoot> call, Throwable t) {
                 Log.e("TAG", "onFailure: " + t.getMessage());
             }
         });

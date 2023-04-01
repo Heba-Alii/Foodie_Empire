@@ -18,5 +18,5 @@ public interface APIInterface {
     Call<MealRoot> getAllMeals(@Query("c") String strCategory);
 
     @GET("lookup.php?i=")
-    Call<Details> getMealDetails(@Query("i") String mealId);
+    Call<DetailsRoot> getMealDetails(@Query("i") String mealId);
 }
