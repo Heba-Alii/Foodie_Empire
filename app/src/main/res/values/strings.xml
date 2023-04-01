@@ -21,4 +21,6 @@
     <string name="search">Search</string>
     <string name="profile">Profile</string>
     <string name="ingredients">Ingredients</string>
+    <string name="avocado">Avocado</string>
+    <string name="steps">Steps</string>
 </resources>
