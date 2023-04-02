@@ -22,9 +22,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.ViewHolder> {
     List<Meal> meals;
+    MealIDInterface mealIDInterface;
 
-    public FavoritesAdapter(List<Meal> meals) {
+    public FavoritesAdapter(List<Meal> meals, MealIDInterface mealIDInterface) {
         this.meals = meals;
+        this.mealIDInterface = mealIDInterface;
     }
 
     @NonNull
@@ -40,6 +42,12 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
         holder.text_fav.setText(meal.getStrMeal());
         Glide.with(holder.itemView).load(meal.getStrMealThumb()).placeholder(R.drawable.favbg).fitCenter()
                 .into(holder.circle_image_fav);
+        holder.fav_card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mealIDInterface.getMailId(meal.getIdMeal());
+            }
+        });
 
     }
 

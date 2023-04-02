@@ -5,8 +5,10 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +18,12 @@ import com.example.foodieempire.controller.LocalBuilder;
 import com.example.foodieempire.databinding.FragmentFavoritesBinding;
 import com.example.foodieempire.model.pojo.Meal;
 import com.example.foodieempire.view.home.FavoritesAdapter;
+import com.example.foodieempire.view.home.MealIDInterface;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FavoritesFragment extends Fragment {
+public class FavoritesFragment extends Fragment implements MealIDInterface {
 
     FragmentFavoritesBinding binding;
     List<Meal> meal = new ArrayList<>();
@@ -49,7 +52,7 @@ public class FavoritesFragment extends Fragment {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            FavoritesAdapter favoritesAdapter = new FavoritesAdapter(meal);
+                            FavoritesAdapter favoritesAdapter = new FavoritesAdapter(meal, FavoritesFragment.this);
                             binding.favRecycler.setLayoutManager(new
                                     GridLayoutManager(getActivity(), 2));
                             binding.favRecycler.setAdapter(favoritesAdapter);
@@ -62,4 +65,12 @@ public class FavoritesFragment extends Fragment {
     }
 
 
+    @Override
+    public void getMailId(String mailId) {
+        Bundle bundle = new Bundle();
+        bundle.putString("mealId", mailId);
+
+        Navigation.findNavController(binding.getRoot()).navigate(R.id.action_favoritesFragment_to_detailsFragment, bundle);
+
+    }
 }

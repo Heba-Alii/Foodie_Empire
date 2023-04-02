@@ -68,9 +68,9 @@ public class MealsFragment extends Fragment implements MealsCallBack, FavotiteIn
     @Override
     public void getMailId(String mailId) {
         Bundle bundle = new Bundle();
-      bundle.putString("mealId",mailId);
-        Log.e("TAG", "getMailId: "+mailId );
+        bundle.putString("mealId", mailId);
         Navigation.findNavController(binding.getRoot()).navigate(R.id.action_mealsFragment_to_detailsFragment, bundle);
+
     }
 
 //    @Override
