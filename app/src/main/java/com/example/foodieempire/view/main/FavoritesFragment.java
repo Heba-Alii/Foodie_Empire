@@ -23,7 +23,7 @@ import com.example.foodieempire.view.home.MealIDInterface;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FavoritesFragment extends Fragment implements MealIDInterface {
+public class FavoritesFragment extends Fragment implements MealIDInterface, DeleteFavItem {
 
     FragmentFavoritesBinding binding;
     List<Meal> meal = new ArrayList<>();
@@ -52,7 +52,7 @@ public class FavoritesFragment extends Fragment implements MealIDInterface {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            FavoritesAdapter favoritesAdapter = new FavoritesAdapter(meal, FavoritesFragment.this);
+                            FavoritesAdapter favoritesAdapter = new FavoritesAdapter(meal, FavoritesFragment.this, FavoritesFragment.this);
                             binding.favRecycler.setLayoutManager(new
                                     GridLayoutManager(getActivity(), 2));
                             binding.favRecycler.setAdapter(favoritesAdapter);
@@ -72,5 +72,16 @@ public class FavoritesFragment extends Fragment implements MealIDInterface {
 
         Navigation.findNavController(binding.getRoot()).navigate(R.id.action_favoritesFragment_to_detailsFragment, bundle);
 
+    }
+
+    @Override
+    public void deleteFav(String favId) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                LocalBuilder localBuilder = LocalBuilder.getInstance(getActivity());
+                localBuilder.mealsDao().deleteItem(favId);
+            }
+        }).start();
     }
 }

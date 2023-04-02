@@ -16,4 +16,7 @@ public interface MealsDao {
 
     @Query("select * from meals_table")
     List<Meal> getAllFavMeals();
+
+    @Query("delete from meals_table where idMeal= :id")
+    void deleteItem(String id);
 }

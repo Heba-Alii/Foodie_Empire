@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.foodieempire.R;
 import com.example.foodieempire.model.pojo.Meal;
+import com.example.foodieempire.view.main.DeleteFavItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,10 +24,12 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.ViewHolder> {
     List<Meal> meals;
     MealIDInterface mealIDInterface;
+    DeleteFavItem deleteFavItem;
 
-    public FavoritesAdapter(List<Meal> meals, MealIDInterface mealIDInterface) {
+    public FavoritesAdapter(List<Meal> meals, MealIDInterface mealIDInterface, DeleteFavItem deleteFavItem) {
         this.meals = meals;
         this.mealIDInterface = mealIDInterface;
+        this.deleteFavItem = deleteFavItem;
     }
 
     @NonNull
@@ -42,6 +45,12 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
         holder.text_fav.setText(meal.getStrMeal());
         Glide.with(holder.itemView).load(meal.getStrMealThumb()).placeholder(R.drawable.favbg).fitCenter()
                 .into(holder.circle_image_fav);
+        holder.fav_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteFavItem.deleteFav(meal.getIdMeal());
+            }
+        });
         holder.fav_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
