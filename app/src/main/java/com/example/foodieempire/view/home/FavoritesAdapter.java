@@ -48,6 +48,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
         holder.fav_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 deleteFavItem.deleteFav(meal.getIdMeal());
             }
         });

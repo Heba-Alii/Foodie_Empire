@@ -45,24 +45,24 @@ public class FavoritesFragment extends Fragment implements MealIDInterface, Dele
             public void run() {
                 LocalBuilder localBuilder = LocalBuilder.getInstance(getActivity());
                 meal = localBuilder.mealsDao().getAllFavMeals();
-                if (!meal.isEmpty()) {
-                    binding.favoriteImage.setVisibility(View.GONE);
-                    binding.favText.setVisibility(View.GONE);
 
 
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (!meal.isEmpty()) {
+                            binding.favoriteImage.setVisibility(View.GONE);
+                            binding.favText.setVisibility(View.GONE);
 
                             FavoritesAdapter favoritesAdapter = new FavoritesAdapter(meal, FavoritesFragment.this, FavoritesFragment.this);
                             binding.favRecycler.setLayoutManager(new
                                     GridLayoutManager(getActivity(), 2));
                             binding.favRecycler.setAdapter(favoritesAdapter);
-
-
                         }
-                    });
-                }
+
+                    }
+                });
+
 
             }
         }).start();
@@ -86,6 +86,20 @@ public class FavoritesFragment extends Fragment implements MealIDInterface, Dele
             public void run() {
                 LocalBuilder localBuilder = LocalBuilder.getInstance(getActivity());
                 localBuilder.mealsDao().deleteItem(favId);
+                meal = localBuilder.mealsDao().getAllFavMeals();
+
+
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        FavoritesAdapter favoritesAdapter = new FavoritesAdapter(meal, FavoritesFragment.this, FavoritesFragment.this);
+                        binding.favRecycler.setLayoutManager(new
+                                GridLayoutManager(getActivity(), 2));
+                        binding.favRecycler.setAdapter(favoritesAdapter);
+
+
+                    }
+                });
             }
         }).start();
     }
