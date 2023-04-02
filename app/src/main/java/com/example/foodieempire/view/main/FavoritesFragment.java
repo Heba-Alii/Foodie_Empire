@@ -42,15 +42,20 @@ public class FavoritesFragment extends Fragment {
             public void run() {
                 LocalBuilder localBuilder = LocalBuilder.getInstance(getActivity());
                 meal = localBuilder.mealsDao().getAllFavMeals();
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        FavoritesAdapter favoritesAdapter = new FavoritesAdapter(meal);
-                        binding.favRecycler.setLayoutManager(new
-                                GridLayoutManager(getActivity(), 2));
-                        binding.favRecycler.setAdapter(favoritesAdapter);
-                    }
-                });
+                if (meal == null) {
+                    binding.favImage.setVisibility(View.VISIBLE);
+
+                } else {
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            FavoritesAdapter favoritesAdapter = new FavoritesAdapter(meal);
+                            binding.favRecycler.setLayoutManager(new
+                                    GridLayoutManager(getActivity(), 2));
+                            binding.favRecycler.setAdapter(favoritesAdapter);
+                        }
+                    });
+                }
             }
         }).start();
 

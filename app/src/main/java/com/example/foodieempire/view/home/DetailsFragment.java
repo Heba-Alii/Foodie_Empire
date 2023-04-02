@@ -1,5 +1,7 @@
 package com.example.foodieempire.view.home;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.foodieempire.R;
@@ -19,6 +22,7 @@ import com.example.foodieempire.databinding.FragmentDetailsBinding;
 import com.example.foodieempire.model.pojo.Details;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class DetailsFragment extends Fragment implements MealDetailsCallback {
     FragmentDetailsBinding binding;
@@ -37,7 +41,6 @@ public class DetailsFragment extends Fragment implements MealDetailsCallback {
         super.onViewCreated(view, savedInstanceState);
         AppController appController = new AppController(DetailsFragment.this);
         String idMeal = getArguments().getString("mealId", "gtg");
-
         appController.getMealDetails(idMeal);
     }
 
@@ -58,6 +61,18 @@ public class DetailsFragment extends Fragment implements MealDetailsCallback {
         binding.ingredientFive.setText(details.get(0).getStrIngredient5());
         binding.measureFive.setText(details.get(0).getStrMeasure5());
 
-
+        binding.youtubeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (Objects.equals(details.get(0).getStrYoutube(), "")) {
+                    Toast.makeText(getActivity(), "Sorry this video is not available", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(details.get(0).getStrYoutube()));
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.setPackage("com.google.android.youtube");
+                    startActivity(intent);
+                }
+            }
+        });
     }
 }
