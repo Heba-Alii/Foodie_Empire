@@ -45,20 +45,25 @@ public class FavoritesFragment extends Fragment implements MealIDInterface, Dele
             public void run() {
                 LocalBuilder localBuilder = LocalBuilder.getInstance(getActivity());
                 meal = localBuilder.mealsDao().getAllFavMeals();
-                if (meal == null) {
-                    binding.favImage.setVisibility(View.VISIBLE);
+                if (!meal.isEmpty()) {
+                    binding.favoriteImage.setVisibility(View.GONE);
+                    binding.favText.setVisibility(View.GONE);
 
-                } else {
+
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+
                             FavoritesAdapter favoritesAdapter = new FavoritesAdapter(meal, FavoritesFragment.this, FavoritesFragment.this);
                             binding.favRecycler.setLayoutManager(new
                                     GridLayoutManager(getActivity(), 2));
                             binding.favRecycler.setAdapter(favoritesAdapter);
+
+
                         }
                     });
                 }
+
             }
         }).start();
 

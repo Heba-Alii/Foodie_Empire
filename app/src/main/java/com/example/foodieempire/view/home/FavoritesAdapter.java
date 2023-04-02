@@ -71,6 +71,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
         CircleImageView circle_image_fav;
         TextView text_fav;
 
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             fav_card = itemView.findViewById(R.id.fav_card);
