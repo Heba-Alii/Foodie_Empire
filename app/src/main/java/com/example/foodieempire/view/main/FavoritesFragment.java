@@ -39,14 +39,11 @@ public class FavoritesFragment extends Fragment implements MealIDInterface, Dele
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         new Thread(new Runnable() {
             @Override
             public void run() {
                 LocalBuilder localBuilder = LocalBuilder.getInstance(getActivity());
                 meal = localBuilder.mealsDao().getAllFavMeals();
-
-
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -59,16 +56,12 @@ public class FavoritesFragment extends Fragment implements MealIDInterface, Dele
                                     GridLayoutManager(getActivity(), 2));
                             binding.favRecycler.setAdapter(favoritesAdapter);
                         }
-
                     }
                 });
-
-
             }
         }).start();
 
     }
-
 
     @Override
     public void getMailId(String mailId) {
@@ -87,8 +80,6 @@ public class FavoritesFragment extends Fragment implements MealIDInterface, Dele
                 LocalBuilder localBuilder = LocalBuilder.getInstance(getActivity());
                 localBuilder.mealsDao().deleteItem(favId);
                 meal = localBuilder.mealsDao().getAllFavMeals();
-
-
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -96,8 +87,6 @@ public class FavoritesFragment extends Fragment implements MealIDInterface, Dele
                         binding.favRecycler.setLayoutManager(new
                                 GridLayoutManager(getActivity(), 2));
                         binding.favRecycler.setAdapter(favoritesAdapter);
-
-
                     }
                 });
             }

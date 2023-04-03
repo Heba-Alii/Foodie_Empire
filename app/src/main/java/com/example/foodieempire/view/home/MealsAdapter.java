@@ -31,6 +31,8 @@ public class MealsAdapter extends RecyclerView.Adapter<MealsAdapter.ViewHolder> 
         this.mealIDInterface = mealIDInterface;
     }
 
+
+
     @NonNull
     @Override
     public MealsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
