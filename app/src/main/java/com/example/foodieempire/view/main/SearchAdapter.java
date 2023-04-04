@@ -15,6 +15,7 @@ import com.example.foodieempire.R;
 import com.example.foodieempire.model.pojo.Details;
 import com.example.foodieempire.model.pojo.Meal;
 import com.example.foodieempire.view.home.FavotiteInterface;
+import com.example.foodieempire.view.home.MealIDInterface;
 import com.example.foodieempire.view.home.MealsAdapter;
 
 import java.util.ArrayList;
@@ -23,9 +24,13 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder> {
     ArrayList<Meal> meals;
+    FavotiteInterface favotiteInterface;
+    MealIDInterface mealIDInterface;
 
-    public SearchAdapter(ArrayList<Meal> meals) {
+    public SearchAdapter(ArrayList<Meal> meals, FavotiteInterface favotiteInterface, MealIDInterface mealIDInterface) {
         this.meals = meals;
+        this.favotiteInterface = favotiteInterface;
+        this.mealIDInterface = mealIDInterface;
     }
 
     @NonNull
@@ -45,6 +50,21 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
                 .fitCenter()
                 .into(holder.circle_image_meal);
         holder.fav_icon.setImageResource(R.drawable.meal_fav);
+        holder.fav_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                favotiteInterface.addToFav(meal);
+                holder.fav_icon.setImageResource(R.drawable.red_fav);
+
+
+            }
+        });
+        holder.meal_card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mealIDInterface.getMailId(meal.getIdMeal());
+            }
+        });
     }
 
     @Override
