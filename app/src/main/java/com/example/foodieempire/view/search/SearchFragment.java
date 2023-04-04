@@ -1,4 +1,4 @@
-package com.example.foodieempire.view.main;
+package com.example.foodieempire.view.search;
 
 import android.os.Bundle;
 
@@ -8,7 +8,6 @@ import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,14 +17,11 @@ import android.widget.Toast;
 import com.example.foodieempire.R;
 import com.example.foodieempire.controller.AppController;
 import com.example.foodieempire.controller.LocalBuilder;
-import com.example.foodieempire.controller.MealDetailsCallback;
 import com.example.foodieempire.controller.MealsCallBack;
 import com.example.foodieempire.databinding.FragmentSearchBinding;
-import com.example.foodieempire.model.pojo.Details;
 import com.example.foodieempire.model.pojo.Meal;
-import com.example.foodieempire.view.home.FavotiteInterface;
+import com.example.foodieempire.view.favorite.FavotiteInterface;
 import com.example.foodieempire.view.home.MealIDInterface;
-import com.example.foodieempire.view.home.MealsAdapter;
 
 import java.util.ArrayList;
 
@@ -51,6 +47,7 @@ public class SearchFragment extends Fragment implements MealsCallBack, FavotiteI
             public boolean onQueryTextSubmit(String query) {
                 AppController appController = new AppController(SearchFragment.this);
                 appController.getMealBySearch(query);
+
                 return true;
             }
 
@@ -64,10 +61,12 @@ public class SearchFragment extends Fragment implements MealsCallBack, FavotiteI
     @Override
     public void getMeals(ArrayList<Meal> meals) {
         if (meals != null) {
+            binding.searchImage.setVisibility(View.GONE);
             SearchAdapter searchAdapter = new SearchAdapter(meals, SearchFragment.this, SearchFragment.this);
             binding.searchRecycler.setLayoutManager(new GridLayoutManager(getActivity(), 2));
             binding.searchRecycler.setAdapter(searchAdapter);
         } else {
+
             Toast.makeText(getActivity(), "Please enter right meal name", Toast.LENGTH_SHORT).show();
         }
     }

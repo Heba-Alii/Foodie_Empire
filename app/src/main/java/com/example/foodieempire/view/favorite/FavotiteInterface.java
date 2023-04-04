@@ -1,4 +1,4 @@
-package com.example.foodieempire.view.home;
+package com.example.foodieempire.view.favorite;
 
 import com.example.foodieempire.model.pojo.Meal;
 

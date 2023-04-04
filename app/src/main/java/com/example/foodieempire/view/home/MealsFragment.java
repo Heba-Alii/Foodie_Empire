@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +18,9 @@ import com.example.foodieempire.controller.LocalBuilder;
 import com.example.foodieempire.controller.MealsCallBack;
 import com.example.foodieempire.databinding.FragmentMealsBinding;
 import com.example.foodieempire.model.pojo.Meal;
+import com.example.foodieempire.view.favorite.FavotiteInterface;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class MealsFragment extends Fragment implements MealsCallBack, FavotiteInterface, MealIDInterface {

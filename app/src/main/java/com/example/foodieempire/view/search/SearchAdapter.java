@@ -1,4 +1,4 @@
-package com.example.foodieempire.view.main;
+package com.example.foodieempire.view.search;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,11 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.foodieempire.R;
-import com.example.foodieempire.model.pojo.Details;
 import com.example.foodieempire.model.pojo.Meal;
-import com.example.foodieempire.view.home.FavotiteInterface;
+import com.example.foodieempire.view.favorite.FavotiteInterface;
 import com.example.foodieempire.view.home.MealIDInterface;
-import com.example.foodieempire.view.home.MealsAdapter;
 
 import java.util.ArrayList;
 

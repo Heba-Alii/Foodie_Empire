@@ -1,4 +1,4 @@
-package com.example.foodieempire.view.home;
+package com.example.foodieempire.view.favorite;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,11 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.foodieempire.R;
 import com.example.foodieempire.model.pojo.Meal;
-import com.example.foodieempire.view.main.DeleteFavItem;
+import com.example.foodieempire.view.home.MealIDInterface;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.Inflater;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 

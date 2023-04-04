@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
-        android:name="com.example.foodieempire.view.main.FavoritesFragment"
+        android:name="com.example.foodieempire.view.favorite.FavoritesFragment"
         android:label="Favorites"
         tools:layout="@layout/fragment_favorites" >
         <action
@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.example.foodieempire.view.main.SearchFragment"
+        android:name="com.example.foodieempire.view.search.SearchFragment"
         android:label="Search"
         tools:layout="@layout/fragment_search" >
         <action

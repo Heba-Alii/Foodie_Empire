@@ -1,21 +1,10 @@
 package com.example.foodieempire.controller;
 
-import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.foodieempire.model.pojo.CategoryRoot;
-import com.example.foodieempire.model.pojo.Details;
 import com.example.foodieempire.model.pojo.DetailsRoot;
-import com.example.foodieempire.model.pojo.Meal;
 import com.example.foodieempire.model.pojo.MealRoot;
-import com.example.foodieempire.view.home.FavotiteInterface;
-import com.example.foodieempire.view.home.MealIDInterface;
-import com.example.foodieempire.view.main.FavoritesFragment;
-import com.example.foodieempire.view.main.MainActivity;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;

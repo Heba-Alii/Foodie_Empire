@@ -1,4 +1,4 @@
-package com.example.foodieempire.view.main;
+package com.example.foodieempire.view.favorite;
 
 import android.os.Bundle;
 
@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,6 @@ import com.example.foodieempire.R;
 import com.example.foodieempire.controller.LocalBuilder;
 import com.example.foodieempire.databinding.FragmentFavoritesBinding;
 import com.example.foodieempire.model.pojo.Meal;
-import com.example.foodieempire.view.home.FavoritesAdapter;
 import com.example.foodieempire.view.home.MealIDInterface;
 
 import java.util.ArrayList;
