@@ -25,6 +25,7 @@ public class MealsAdapter extends RecyclerView.Adapter<MealsAdapter.ViewHolder> 
     FavotiteInterface favotiteInterface;
     MealIDInterface mealIDInterface;
 
+
     public MealsAdapter(ArrayList<Meal> meals, FavotiteInterface favotiteInterface, MealIDInterface mealIDInterface) {
         this.meals = meals;
         this.favotiteInterface = favotiteInterface;

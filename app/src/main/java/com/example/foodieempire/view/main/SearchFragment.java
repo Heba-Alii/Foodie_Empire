@@ -12,12 +12,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.foodieempire.R;
 import com.example.foodieempire.controller.AppController;
+import com.example.foodieempire.controller.LocalBuilder;
 import com.example.foodieempire.controller.MealDetailsCallback;
+import com.example.foodieempire.controller.MealsCallBack;
 import com.example.foodieempire.databinding.FragmentSearchBinding;
 import com.example.foodieempire.model.pojo.Details;
+import com.example.foodieempire.model.pojo.Meal;
 import com.example.foodieempire.view.home.MealsAdapter;
 
 import java.util.ArrayList;
@@ -25,6 +29,7 @@ import java.util.ArrayList;
 
 public class SearchFragment extends Fragment implements MealDetailsCallback {
     FragmentSearchBinding binding;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,14 +46,16 @@ public class SearchFragment extends Fragment implements MealDetailsCallback {
         binding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+
                 AppController appController = new AppController(SearchFragment.this);
                 appController.getMealBySearch(query);
+
+
                 return true;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-
                 return true;
             }
         });
@@ -56,8 +63,15 @@ public class SearchFragment extends Fragment implements MealDetailsCallback {
 
     @Override
     public void getDetails(ArrayList<Details> details) {
-        SearchAdapter searchAdapter = new SearchAdapter(details);
-        binding.searchRecycler.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-        binding.searchRecycler.setAdapter(searchAdapter);
+        if (details != null) {
+            SearchAdapter searchAdapter = new SearchAdapter(details);
+            binding.searchRecycler.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+            binding.searchRecycler.setAdapter(searchAdapter);
+
+
+        } else {
+            Toast.makeText(getActivity(), "Please enter right meal name", Toast.LENGTH_SHORT).show();
+        }
     }
+
 }

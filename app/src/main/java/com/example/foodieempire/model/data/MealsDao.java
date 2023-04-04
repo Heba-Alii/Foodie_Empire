@@ -5,8 +5,10 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
+import com.example.foodieempire.model.pojo.Details;
 import com.example.foodieempire.model.pojo.Meal;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Dao
@@ -19,4 +21,5 @@ public interface MealsDao {
 
     @Query("delete from meals_table where idMeal= :id")
     void deleteItem(String id);
+
 }
