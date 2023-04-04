@@ -21,6 +21,6 @@ public interface APIInterface {
     Call<DetailsRoot> getMealDetails(@Query("i") String mealId);
 
     @GET("search.php?s=")
-    Call<DetailsRoot> getSearchMeals(@Query("s") String mealName);
+    Call<MealRoot> getSearchMeals(@Query("s") String mealName);
 
 }

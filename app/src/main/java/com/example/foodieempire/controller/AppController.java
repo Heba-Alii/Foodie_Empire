@@ -89,16 +89,16 @@ public class AppController {
     }
 
     public void getMealBySearch(String mealName) {
-        Call<DetailsRoot> call = AppRetrofit.getInstance().getApiInterface().getSearchMeals(mealName);
-        call.enqueue(new Callback<DetailsRoot>() {
+        Call<MealRoot> call = AppRetrofit.getInstance().getApiInterface().getSearchMeals(mealName);
+        call.enqueue(new Callback<MealRoot>() {
             @Override
-            public void onResponse(Call<DetailsRoot> call, Response<DetailsRoot> response) {
-                mealDetailsCallback.getDetails(response.body().getMeals());
+            public void onResponse(Call<MealRoot> call, Response<MealRoot> response) {
+                mealsCallBack.getMeals(response.body().getMeals());
                 Log.e("TAG", "onResponse search: "+response.body().getMeals() );
             }
 
             @Override
-            public void onFailure(Call<DetailsRoot> call, Throwable t) {
+            public void onFailure(Call<MealRoot> call, Throwable t) {
 
             }
         });

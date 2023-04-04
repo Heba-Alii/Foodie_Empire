@@ -27,7 +27,7 @@ import com.example.foodieempire.view.home.MealsAdapter;
 import java.util.ArrayList;
 
 
-public class SearchFragment extends Fragment implements MealDetailsCallback {
+public class SearchFragment extends Fragment implements MealsCallBack {
     FragmentSearchBinding binding;
 
 
@@ -61,10 +61,11 @@ public class SearchFragment extends Fragment implements MealDetailsCallback {
         });
     }
 
+
     @Override
-    public void getDetails(ArrayList<Details> details) {
-        if (details != null) {
-            SearchAdapter searchAdapter = new SearchAdapter(details);
+    public void getMeals(ArrayList<Meal> meals) {
+        if (meals != null) {
+            SearchAdapter searchAdapter = new SearchAdapter(meals);
             binding.searchRecycler.setLayoutManager(new GridLayoutManager(getActivity(), 2));
             binding.searchRecycler.setAdapter(searchAdapter);
 
@@ -73,5 +74,4 @@ public class SearchFragment extends Fragment implements MealDetailsCallback {
             Toast.makeText(getActivity(), "Please enter right meal name", Toast.LENGTH_SHORT).show();
         }
     }
-
 }

@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.foodieempire.R;
 import com.example.foodieempire.model.pojo.Details;
+import com.example.foodieempire.model.pojo.Meal;
+import com.example.foodieempire.view.home.FavotiteInterface;
 import com.example.foodieempire.view.home.MealsAdapter;
 
 import java.util.ArrayList;
@@ -20,10 +22,10 @@ import java.util.ArrayList;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder> {
-    ArrayList<Details> details;
+    ArrayList<Meal> meals;
 
-    public SearchAdapter(ArrayList<Details> details) {
-        this.details = details;
+    public SearchAdapter(ArrayList<Meal> meals) {
+        this.meals = meals;
     }
 
     @NonNull
@@ -35,10 +37,10 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull SearchAdapter.ViewHolder holder, int position) {
-        Details details1 = details.get(position);
-        holder.text_meal.setText(details1.getStrMeal());
+        Meal meal = meals.get(position);
+        holder.text_meal.setText(meal.getStrMeal());
         Glide.with(holder.itemView)
-                .load(details1.getStrMealThumb())
+                .load(meal.getStrMealThumb())
                 .placeholder(R.drawable.logo)
                 .fitCenter()
                 .into(holder.circle_image_meal);
@@ -47,7 +49,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        return details.size();
+        return meals.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
