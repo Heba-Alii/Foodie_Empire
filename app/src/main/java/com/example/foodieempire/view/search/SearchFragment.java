@@ -47,7 +47,7 @@ public class SearchFragment extends Fragment implements MealsCallBack, FavotiteI
             public boolean onQueryTextSubmit(String query) {
                 AppController appController = new AppController(SearchFragment.this);
                 appController.getMealBySearch(query);
-
+                binding.progress.setVisibility(View.VISIBLE);
                 return true;
             }
 
@@ -60,7 +60,7 @@ public class SearchFragment extends Fragment implements MealsCallBack, FavotiteI
 
     @Override
     public void getMeals(ArrayList<Meal> meals) {
-        binding.progress.setVisibility(View.VISIBLE);
+
         if (meals != null) {
             binding.searchImage.setVisibility(View.GONE);
             SearchAdapter searchAdapter = new SearchAdapter(meals, SearchFragment.this, SearchFragment.this);
