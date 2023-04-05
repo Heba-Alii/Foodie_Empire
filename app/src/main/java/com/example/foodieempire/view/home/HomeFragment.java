@@ -38,6 +38,7 @@ public class HomeFragment extends Fragment implements CategoryCallback, StrCateg
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        binding.homeProgress.setVisibility(View.VISIBLE);
         super.onViewCreated(view, savedInstanceState);
         ArrayList<SlideModel> slideModels = new ArrayList<>();
         slideModels.add(new SlideModel(R.drawable.logo, ScaleTypes.FIT));
@@ -55,6 +56,7 @@ public class HomeFragment extends Fragment implements CategoryCallback, StrCateg
         CategoryAdapter categoryAdapter = new CategoryAdapter(categories, HomeFragment.this);
         binding.homeRecycler.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         binding.homeRecycler.setAdapter(categoryAdapter);
+        binding.homeProgress.setVisibility(View.GONE);
     }
 
     @Override

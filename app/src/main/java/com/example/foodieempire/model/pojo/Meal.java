@@ -5,6 +5,11 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import com.google.errorprone.annotations.CanIgnoreReturnValue;
+import com.google.gson.annotations.SerializedName;
+
+import org.json.JSONObject;
+
 import java.io.Serializable;
 
 @Entity(tableName = "meals_table")
@@ -16,12 +21,13 @@ public class Meal implements Serializable {
     private String strMealThumb;
 
 
-
-    public Meal(String strMeal, String strMealThumb, @NonNull String idMeal) {
+    public Meal(@NonNull String idMeal, String strMeal, String strMealThumb) {
+        this.idMeal = idMeal;
         this.strMeal = strMeal;
         this.strMealThumb = strMealThumb;
-        this.idMeal = idMeal;
+
     }
+
 
     public String getStrMeal() {
         return strMeal;

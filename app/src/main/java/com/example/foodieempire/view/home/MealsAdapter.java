@@ -31,8 +31,6 @@ public class MealsAdapter extends RecyclerView.Adapter<MealsAdapter.ViewHolder> 
         this.mealIDInterface = mealIDInterface;
     }
 
-
-
     @NonNull
     @Override
     public MealsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -49,18 +47,19 @@ public class MealsAdapter extends RecyclerView.Adapter<MealsAdapter.ViewHolder> 
                 .placeholder(R.drawable.logo)
                 .fitCenter()
                 .into(holder.circle_image_meal);
-        holder.fav_icon.setImageResource(R.drawable.meal_fav);
 
+        // if (meal.isFavorite() == true) {
+        //   holder.fav_icon.setImageResource(R.drawable.red_fav);
+        //  } else {
+        holder.fav_icon.setImageResource(R.drawable.meal_fav);
+        // }
         holder.fav_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 favotiteInterface.addToFav(meal);
                 holder.fav_icon.setImageResource(R.drawable.red_fav);
-
-
             }
         });
-
         holder.meal_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

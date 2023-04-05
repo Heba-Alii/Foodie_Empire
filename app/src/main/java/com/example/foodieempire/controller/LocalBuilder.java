@@ -3,6 +3,7 @@ package com.example.foodieempire.controller;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
+import androidx.room.AutoMigration;
 import androidx.room.Database;
 import androidx.room.DatabaseConfiguration;
 import androidx.room.InvalidationTracker;
@@ -14,7 +15,7 @@ import com.example.foodieempire.model.data.MealsDao;
 import com.example.foodieempire.model.pojo.Details;
 import com.example.foodieempire.model.pojo.Meal;
 
-@Database(entities = Meal.class, version = 1)
+@Database(entities = Meal.class, version =1)
 public abstract class LocalBuilder extends RoomDatabase {
     private static LocalBuilder dbInstance;
 
