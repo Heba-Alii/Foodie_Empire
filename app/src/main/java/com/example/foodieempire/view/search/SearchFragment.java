@@ -60,13 +60,15 @@ public class SearchFragment extends Fragment implements MealsCallBack, FavotiteI
 
     @Override
     public void getMeals(ArrayList<Meal> meals) {
+        binding.progress.setVisibility(View.VISIBLE);
         if (meals != null) {
             binding.searchImage.setVisibility(View.GONE);
             SearchAdapter searchAdapter = new SearchAdapter(meals, SearchFragment.this, SearchFragment.this);
             binding.searchRecycler.setLayoutManager(new GridLayoutManager(getActivity(), 2));
             binding.searchRecycler.setAdapter(searchAdapter);
+            binding.progress.setVisibility(View.GONE);
         } else {
-
+            binding.progress.setVisibility(View.GONE);
             Toast.makeText(getActivity(), "Please enter right meal name", Toast.LENGTH_SHORT).show();
         }
     }

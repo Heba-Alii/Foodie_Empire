@@ -11,17 +11,21 @@
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search_view"
-
-        android:background="@drawable/custome_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp" />
-
+        android:layout_margin="20dp"
+        android:background="@drawable/custome_search" />
+<ProgressBar
+    android:id="@+id/progress"
+    android:layout_marginTop="50dp"
+    android:visibility="gone"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
     <ImageView
         android:id="@+id/search_image"
         android:layout_width="200dp"
         android:layout_height="200dp"
-       android:layout_marginTop="100dp"
+        android:layout_marginTop="100dp"
         android:src="@drawable/searching"
         android:visibility="visible" />
 
