@@ -1,5 +1,7 @@
 package com.example.foodieempire.view.main;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -35,11 +37,26 @@ public class ProfileFragment extends Fragment {
         binding.logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                firebaseAuth.signOut();
-                Navigation.findNavController(binding.getRoot()).navigate(R.id.action_profileFragment_to_registrationActivity);
-                getActivity().finish();
+                new AlertDialog.Builder(getActivity())
+                        .setTitle("Log out?")
+                                .setMessage("Are you sure you want to log out?")
+                                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int i) {
+                                                firebaseAuth.signOut();
+                                                Navigation.findNavController(binding.getRoot()).navigate(R.id.action_profileFragment_to_registrationActivity);
+                                                getActivity().finish();
+                                            }
+                                        })
+                        .setNegativeButton("No",null)
+                        .setIcon(R.drawable.baseline_add_alert_24).show();
+
             }
         });
 
+        if (firebaseAuth.getCurrentUser() != null) {
+            binding.userMail.setText(firebaseAuth.getCurrentUser().getEmail());
+
+        }
     }
 }

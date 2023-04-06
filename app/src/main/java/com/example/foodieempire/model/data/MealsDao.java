@@ -22,4 +22,6 @@ public interface MealsDao {
     @Query("delete from meals_table where idMeal= :id")
     void deleteItem(String id);
 
+    @Query("delete from meals_table")
+    void deleteAllFavorite();
 }
