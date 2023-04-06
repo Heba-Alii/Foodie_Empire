@@ -57,7 +57,7 @@ public class MealsAdapter extends RecyclerView.Adapter<MealsAdapter.ViewHolder> 
                 LocalBuilder localBuilder = LocalBuilder.getInstance(holder.itemView.getContext());
                 boolean id = localBuilder.mealsDao().isFav(meal.getIdMeal());
 
-                if (id == true) {
+                if (id) {
                     holder.fav_icon.setImageResource(R.drawable.red_fav);
                 } else {
                     holder.fav_icon.setImageResource(R.drawable.meal_fav);
