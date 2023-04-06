@@ -20,14 +20,11 @@ public class Meal implements Serializable {
     private String strMeal;
     private String strMealThumb;
 
-
     public Meal(@NonNull String idMeal, String strMeal, String strMealThumb) {
         this.idMeal = idMeal;
         this.strMeal = strMeal;
         this.strMealThumb = strMealThumb;
-
     }
-
 
     public String getStrMeal() {
         return strMeal;

@@ -24,4 +24,7 @@ public interface MealsDao {
 
     @Query("delete from meals_table")
     void deleteAllFavorite();
+
+    @Query("SELECT EXISTS(SELECT * FROM MEALS_TABLE WHERE idMeal= :id)")
+    boolean isFav(String id);
 }

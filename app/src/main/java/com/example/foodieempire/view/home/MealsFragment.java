@@ -19,6 +19,7 @@ import com.example.foodieempire.controller.MealsCallBack;
 import com.example.foodieempire.databinding.FragmentMealsBinding;
 import com.example.foodieempire.model.pojo.Meal;
 import com.example.foodieempire.view.favorite.FavotiteInterface;
+import com.example.foodieempire.view.favorite.IsFavorite;
 
 import java.util.ArrayList;
 
@@ -55,7 +56,6 @@ public class MealsFragment extends Fragment implements MealsCallBack, FavotiteIn
             @Override
             public void run() {
                 LocalBuilder localBuilder = LocalBuilder.getInstance(getActivity());
-                //meal.setFavorite(true);
                 localBuilder.mealsDao().insertFavMeals(meal);
             }
         }).start();
@@ -68,24 +68,5 @@ public class MealsFragment extends Fragment implements MealsCallBack, FavotiteIn
         Navigation.findNavController(binding.getRoot()).navigate(R.id.action_mealsFragment_to_detailsFragment, bundle);
     }
 
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//       new Thread(new Runnable() {
-//           @Override
-//           public void run() {
-//               LocalBuilder localBuilder=LocalBuilder.getInstance(getActivity());
-//               localBuilder.mealsDao().getAllFavMeals();
-//               getActivity().runOnUiThread(new Runnable() {
-//                   @Override
-//                public void run() {
-//                       MealsAdapter mealsAdapter = new MealsAdapter(meals, MealsFragment.this,MealsFragment.this);
-//                     binding.homeRecycler.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-//                       binding.homeRecycler.setAdapter(mealsAdapter);
-//                   }
-//               });
-//           }
-//       }).start();
-//    }
 
 }
