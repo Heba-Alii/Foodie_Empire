@@ -51,6 +51,7 @@ public class MealsAdapter extends RecyclerView.Adapter<MealsAdapter.ViewHolder> 
                 .placeholder(R.drawable.logo)
                 .fitCenter()
                 .into(holder.circle_image_meal);
+        holder.fav_icon.setImageResource(R.drawable.meal_fav);
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -59,8 +60,6 @@ public class MealsAdapter extends RecyclerView.Adapter<MealsAdapter.ViewHolder> 
 
                 if (id) {
                     holder.fav_icon.setImageResource(R.drawable.red_fav);
-                } else {
-                    holder.fav_icon.setImageResource(R.drawable.meal_fav);
                 }
             }
 
