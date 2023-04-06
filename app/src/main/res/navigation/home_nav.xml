@@ -35,7 +35,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.foodieempire.view.main.ProfileFragment"
+        android:name="com.example.foodieempire.view.profile.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" >
         <action

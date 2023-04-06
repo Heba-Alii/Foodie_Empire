@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.foodieempire.R;
+import com.example.foodieempire.controller.AppSharedPreference;
 import com.example.foodieempire.databinding.FragmentRegisterBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -44,12 +45,19 @@ public class RegisterFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 String name = binding.nameET.getText().toString();
+                String phone = binding.phoneET.getText().toString();
                 String mail = binding.mailET.getText().toString();
                 String pass = binding.passET.getText().toString();
-                if (isDataNotValid(name, mail, pass)) {
+                if (isDataNotValid(name, mail, pass, phone)) {
                     Toast.makeText(getActivity(), "Complete Your Data Please", Toast.LENGTH_SHORT).show();
                 } else
                     addToFirebaseAuth(mail, pass);
+                 writeToSharedPreference(name, phone,mail);
+
+            }
+
+            private void writeToSharedPreference(String name, String phone, String mail) {
+                AppSharedPreference.writeToSharedPrefernce(getActivity(), name, phone, mail);
             }
         });
 
@@ -73,7 +81,7 @@ public class RegisterFragment extends Fragment {
                 });
     }
 
-    private boolean isDataNotValid(String name, String mail, String pass) {
-        return name.isEmpty() || mail.isEmpty() || pass.isEmpty();
+    private boolean isDataNotValid(String name, String mail, String pass, String phone) {
+        return name.isEmpty() || mail.isEmpty() || pass.isEmpty() || phone.isEmpty();
     }
 }

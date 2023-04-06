@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.foodieempire.R;
+import com.example.foodieempire.controller.AppSharedPreference;
 import com.example.foodieempire.databinding.FragmentLoginBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -40,11 +41,17 @@ public class LoginFragment extends Fragment {
             public void onClick(View view) {
                 String mail = binding.mailET.getText().toString();
                 String pass = binding.passET.getText().toString();
-                if (isDataEmpty(mail, pass)) {
+                String name = binding.nameET.getText().toString();
+                if (isDataEmpty(mail, pass,name)) {
                     Toast.makeText(getActivity(), "Please Complete Your Data", Toast.LENGTH_SHORT).show();
                 } else {
                     loginWithFirebaseAuth(mail, pass);
+                    writeToSharedPref(name);
                 }
+            }
+
+            private void writeToSharedPref(String name) {
+                AppSharedPreference.writeToSharedPrefernce(getActivity(),name);
             }
         });
     }
@@ -63,7 +70,7 @@ public class LoginFragment extends Fragment {
         });
     }
 
-    private boolean isDataEmpty(String mail, String pass) {
-        return mail.isEmpty() || pass.isEmpty();
+    private boolean isDataEmpty(String mail, String pass,String name) {
+        return mail.isEmpty() || pass.isEmpty() || name.isEmpty();
     }
 }
