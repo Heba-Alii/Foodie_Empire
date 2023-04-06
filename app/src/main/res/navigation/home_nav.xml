@@ -37,7 +37,11 @@
         android:id="@+id/profileFragment"
         android:name="com.example.foodieempire.view.main.ProfileFragment"
         android:label="Profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_registrationActivity"
+            app:destination="@id/registrationActivity" />
+    </fragment>
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.example.foodieempire.view.home.DetailsFragment"
@@ -54,5 +58,10 @@
             app:destination="@id/detailsFragment" />
 
     </fragment>
+    <activity
+        android:id="@+id/registrationActivity"
+        android:name="com.example.foodieempire.view.register.RegistrationActivity"
+        android:label="activity_registration"
+        tools:layout="@layout/activity_registration" />
 
 </navigation>
