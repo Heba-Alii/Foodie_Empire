@@ -51,7 +51,7 @@ public class ProfileFragment extends Fragment {
                                 new Thread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        LocalBuilder localBuilder=LocalBuilder.getInstance(getActivity());
+                                        LocalBuilder localBuilder = LocalBuilder.getInstance(getActivity());
                                         localBuilder.mealsDao().deleteAllFavorite();
                                     }
                                 }).start();
@@ -64,10 +64,11 @@ public class ProfileFragment extends Fragment {
         });
 
         if (firebaseAuth.getCurrentUser() != null) {
-            binding.userMail.setText(firebaseAuth.getCurrentUser().getEmail());
+            binding.userMail.setText(getString(R.string.email)+firebaseAuth.getCurrentUser().getEmail());
         }
         String name = AppSharedPreference.getName(getActivity());
         binding.userName.setText(name);
+        binding.welcomeText.setText(getString(R.string.welcom) + name + getString(R.string.foodie));
 
     }
 }

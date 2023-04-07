@@ -7,22 +7,25 @@
     android:background="@color/teal_700"
     tools:context=".view.favorite.FavoritesFragment">
 
-    <de.hdodenhof.circleimageview.CircleImageView
+
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/favorite_image"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="150dp"
-        android:src="@drawable/fav"
-       android:visibility="visible"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="50dp"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/favorites" />
 
     <TextView
         android:id="@+id/fav_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Favorite is empty !"
+        android:text="@string/favorite_is_empty"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="20sp"

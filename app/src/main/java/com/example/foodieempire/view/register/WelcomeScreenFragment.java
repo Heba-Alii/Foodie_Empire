@@ -33,7 +33,7 @@ public class WelcomeScreenFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        SpannableString login = new SpannableString("Log In");
+        SpannableString login = new SpannableString(getString(R.string.loged));
         login.setSpan(new UnderlineSpan(), 0, login.length(), 0);
         binding.login.setText(login);
         binding.registerBtn.setOnClickListener(new View.OnClickListener() {

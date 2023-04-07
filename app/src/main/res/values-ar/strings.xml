@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cooking_experience_like_a_chef">تجربة الطبخ مثل الطاهي</string>
+    <string name="create_an_account">إنشاء حساب</string>
+    <string name="log_in">تسجيل الدخول</string>
+    <string name="already_have_an_account">هل لديك حساب</string>
+    <string name="login">تسجيل الدخول</string>
+    <string name="full_name">الإسم بالكامل</string>
+    <string name="e_mail_address">البريد الإلكتروني</string>
+    <string name="password">الرقم السري</string>
+    <string name="by_creating_an_account_you_agree_to_our_terms_and_conditions_and_agree_to_privacy_policy">من خلال إنشاء حساب فإنك توافق على الشروط والأحكام الخاصة بنا وتوافق على سياسة الخصوصية ..</string>
+    <string name="welcome_back">مرحبًا بعودتك!</string>
+    <string name="please_log_in_to_continue">الرجاء تسجيل الدخول للمتابعة..</string>
+    <string name="createAccount">إنشاء حساب</string>
+    <string name="logIn">تسجيل الدخول</string>
+    <string name="home">الصفحة الرئيسية</string>
+    <string name="favorites">المفضلة</string>
+    <string name="search">البحث</string>
+    <string name="profile">الصفحة الشخصية</string>
+    <string name="ingredients">المكونات</string>
+    <string name="avocado">Avocado</string>
+    <string name="steps">الخطوات</string>
+    <string name="video_explain_this_recipe_step_by_step">فيديو يشرح هذه الوصفة خطوة بخطوة</string>
+    <string name="log_out">تسجيل الخروج</string>
+    <string name="phone_number">رقم الموبايل</string>
+    <string name="name">الإسم</string>
+    <string name="favorite_is_empty">المفضلة فارغة</string>
+    <string name="wlcome">مرحبًا بك في Foodie Empire</string>
+    <string name="log">تسجيل الدخول</string>
+    <string name="crate">إنشاء حساب</string>
+    <string name="loged">تسجيل الدخول</string>
+    <string name="email">\"البريد الإلكتروني : \"</string>
+    <string name="welcom">\"مرحباً بك \"</string>
+    <string name="foodie">\" في صفحتك الشخصية على Foodie Empire\"</string>
+</resources>

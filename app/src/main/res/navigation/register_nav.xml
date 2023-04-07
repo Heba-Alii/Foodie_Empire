@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/welcomeScreenFragment"
         android:name="com.example.foodieempire.view.register.WelcomeScreenFragment"
-        android:label="Welcome in Foodie Empire"
+        android:label="@string/wlcome"
         tools:layout="@layout/fragment_welcome_screen">
         <action
             android:id="@+id/action_welcomeScreenFragment_to_loginFragment"
@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.foodieempire.view.register.LoginFragment"
-        android:label="Log In"
+        android:label="@string/log"
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_mainActivity"
@@ -30,7 +30,7 @@
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.foodieempire.view.register.RegisterFragment"
-        android:label="Create Account"
+        android:label="@string/crate"
         tools:layout="@layout/fragment_register">
         <action
             android:id="@+id/action_registerFragment_to_mainActivity"

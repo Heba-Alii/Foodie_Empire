@@ -43,7 +43,6 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:padding="10dp"
-            android:text="Ayam Priek"
             android:textAlignment="center"
             android:textColor="@color/teal_700"
             android:textSize="17sp"
