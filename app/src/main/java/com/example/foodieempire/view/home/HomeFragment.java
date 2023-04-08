@@ -1,5 +1,6 @@
 package com.example.foodieempire.view.home;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -47,7 +48,7 @@ public class HomeFragment extends Fragment implements CategoryCallback, StrCateg
         slideModels.add(new SlideModel(R.drawable.meals, ScaleTypes.FIT));
         slideModels.add(new SlideModel(R.drawable.categories, ScaleTypes.FIT));
         binding.imageSlider.setImageList(slideModels, ScaleTypes.FIT);
-        AppController appController = new AppController(HomeFragment.this);
+        AppController appController = new AppController(HomeFragment.this,getContext());
         appController.getAllCategory();
     }
 
