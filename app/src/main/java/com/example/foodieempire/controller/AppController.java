@@ -113,6 +113,7 @@ public class AppController {
                     mealsCallBack.getMeals(response.body().getMeals());
                     Log.e("TAG", "onResponse search: " + response.body().getMeals());
                 } else {
+                    Log.e("TAG", "onResponse: " + response.body());
                     Toast.makeText(context, "No data Found please try again another time", Toast.LENGTH_SHORT).show();
                 }
             }
