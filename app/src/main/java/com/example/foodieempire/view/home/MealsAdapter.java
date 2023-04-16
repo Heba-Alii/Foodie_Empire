@@ -15,7 +15,6 @@ import com.example.foodieempire.R;
 import com.example.foodieempire.controller.LocalBuilder;
 import com.example.foodieempire.model.pojo.Meal;
 import com.example.foodieempire.view.favorite.FavotiteInterface;
-import com.example.foodieempire.view.favorite.IsFavorite;
 
 import java.util.ArrayList;
 
@@ -25,7 +24,6 @@ public class MealsAdapter extends RecyclerView.Adapter<MealsAdapter.ViewHolder> 
     ArrayList<Meal> meals;
     FavotiteInterface favotiteInterface;
     MealIDInterface mealIDInterface;
-    IsFavorite isFavorite;
 
 
     public MealsAdapter(ArrayList<Meal> meals, FavotiteInterface favotiteInterface, MealIDInterface mealIDInterface) {

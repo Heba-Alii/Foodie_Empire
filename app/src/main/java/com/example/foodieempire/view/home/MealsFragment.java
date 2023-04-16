@@ -19,7 +19,6 @@ import com.example.foodieempire.controller.MealsCallBack;
 import com.example.foodieempire.databinding.FragmentMealsBinding;
 import com.example.foodieempire.model.pojo.Meal;
 import com.example.foodieempire.view.favorite.FavotiteInterface;
-import com.example.foodieempire.view.favorite.IsFavorite;
 
 import java.util.ArrayList;
 

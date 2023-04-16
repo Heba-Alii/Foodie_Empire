@@ -19,6 +19,9 @@ public interface MealsDao {
     @Query("select * from meals_table")
     List<Meal> getAllFavMeals();
 
+    @Query("select * from meals_table where idMeal= :firebaseid")
+    List<Meal> getFav(String firebaseid);
+
     @Query("delete from meals_table where idMeal= :id")
     void deleteItem(String id);
 

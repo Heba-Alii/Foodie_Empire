@@ -42,7 +42,7 @@ public class LoginFragment extends Fragment {
                 String mail = binding.mailET.getText().toString();
                 String pass = binding.passET.getText().toString();
                 String name = binding.nameET.getText().toString();
-                if (isDataEmpty(mail, pass,name)) {
+                if (isDataEmpty(mail, pass, name)) {
                     Toast.makeText(getActivity(), "Please Complete Your Data", Toast.LENGTH_SHORT).show();
                 } else {
                     loginWithFirebaseAuth(mail, pass);
@@ -51,7 +51,7 @@ public class LoginFragment extends Fragment {
             }
 
             private void writeToSharedPref(String name) {
-                AppSharedPreference.writeToSharedPrefernce(getActivity(),name);
+                AppSharedPreference.writeToSharedPrefernce(getActivity(), name);
             }
         });
     }
@@ -61,16 +61,19 @@ public class LoginFragment extends Fragment {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
+                    binding.loginBtn.setVisibility(View.GONE);
+                    binding.loginProgress.setVisibility(View.VISIBLE);
                     Navigation.findNavController(binding.getRoot()).navigate(R.id.action_loginFragment_to_mainActivity);
                     getActivity().finish();
                 } else {
+                    binding.loginProgress.setVisibility(View.GONE);
                     Toast.makeText(getActivity(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
-    private boolean isDataEmpty(String mail, String pass,String name) {
+    private boolean isDataEmpty(String mail, String pass, String name) {
         return mail.isEmpty() || pass.isEmpty() || name.isEmpty();
     }
 }

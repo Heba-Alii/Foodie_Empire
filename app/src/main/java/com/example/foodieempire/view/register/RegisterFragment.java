@@ -44,15 +44,17 @@ public class RegisterFragment extends Fragment {
         binding.registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String name = binding.nameET.getText().toString();
                 String phone = binding.phoneET.getText().toString();
                 String mail = binding.mailET.getText().toString();
                 String pass = binding.passET.getText().toString();
                 if (isDataNotValid(name, mail, pass, phone)) {
+
                     Toast.makeText(getActivity(), "Complete Your Data Please", Toast.LENGTH_SHORT).show();
                 } else
                     addToFirebaseAuth(mail, pass);
-                 writeToSharedPreference(name, phone,mail);
+                writeToSharedPreference(name, phone, mail);
 
             }
 
@@ -71,9 +73,12 @@ public class RegisterFragment extends Fragment {
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if (task.isSuccessful()) {
+                            binding.registerBtn.setVisibility(View.GONE);
+                            binding.registerProgress.setVisibility(View.VISIBLE);
                             Navigation.findNavController(binding.getRoot()).navigate(R.id.action_registerFragment_to_mainActivity);
                             getActivity().finish();
                         } else {
+                            binding.registerProgress.setVisibility(View.GONE);
                             Log.d("TAG", "onComplete: " + task.getException().getMessage());
                             Toast.makeText(getActivity(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
