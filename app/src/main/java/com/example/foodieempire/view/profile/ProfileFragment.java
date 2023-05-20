@@ -64,7 +64,7 @@ public class ProfileFragment extends Fragment {
         });
 
         if (firebaseAuth.getCurrentUser() != null) {
-            binding.userMail.setText(getString(R.string.email)+firebaseAuth.getCurrentUser().getEmail());
+            binding.userMail.setText(getString(R.string.email) + firebaseAuth.getCurrentUser().getEmail());
         }
         String name = AppSharedPreference.getName(getActivity());
         binding.userName.setText(name);

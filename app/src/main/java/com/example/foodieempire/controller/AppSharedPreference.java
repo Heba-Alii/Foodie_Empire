@@ -27,11 +27,4 @@ public class AppSharedPreference {
         return getSharedPreference(context).getString("name", "");
     }
 
-    public static String getPhone(Context context) {
-        return getSharedPreference(context).getString("phone", "");
-    }
-
-    public static String getMail(Context context) {
-        return getSharedPreference(context).getString("mail", "");
-    }
 }

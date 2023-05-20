@@ -1,5 +1,7 @@
 package com.example.foodieempire.view.favorite;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.example.foodieempire.R;
 import com.example.foodieempire.model.pojo.Meal;
 import com.example.foodieempire.view.home.MealIDInterface;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
 
@@ -46,8 +49,20 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
         holder.fav_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                new AlertDialog.Builder(holder.itemView.getContext())
+                        .setTitle("Remove")
+                        .setMessage("Are you want to delete this meal from favorite?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                deleteFavItem.deleteFav(meal.getIdMeal());
 
-                deleteFavItem.deleteFav(meal.getIdMeal());
+                            }
+                        })
+                        .setNegativeButton("No", null)
+                        .setIcon(R.drawable.baseline_add_alert_24)
+                        .show();
+
             }
         });
         holder.fav_card.setOnClickListener(new View.OnClickListener() {

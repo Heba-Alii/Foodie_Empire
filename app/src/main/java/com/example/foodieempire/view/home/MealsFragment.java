@@ -19,8 +19,10 @@ import com.example.foodieempire.controller.MealsCallBack;
 import com.example.foodieempire.databinding.FragmentMealsBinding;
 import com.example.foodieempire.model.pojo.Meal;
 import com.example.foodieempire.view.favorite.FavotiteInterface;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class MealsFragment extends Fragment implements MealsCallBack, FavotiteInterface, MealIDInterface {
@@ -66,6 +68,7 @@ public class MealsFragment extends Fragment implements MealsCallBack, FavotiteIn
         bundle.putString("mealId", mailId);
         Navigation.findNavController(binding.getRoot()).navigate(R.id.action_mealsFragment_to_detailsFragment, bundle);
     }
+
 
 
 }

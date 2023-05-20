@@ -92,4 +92,6 @@ public class SearchFragment extends Fragment implements MealsCallBack, FavotiteI
         Navigation.findNavController(binding.getRoot()).navigate(R.id.action_searchFragment_to_detailsFragment, bundle);
 
     }
+
+
 }

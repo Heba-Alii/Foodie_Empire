@@ -26,10 +26,6 @@ public class AppController {
         this.mealsCallBack = mealsCallBack;
     }
 
-    // public AppController(CategoryCallback categoryCallback) {
-    //   this.categoryCallback = categoryCallback;
-    //}
-
     public AppController(CategoryCallback categoryCallback, Context context) {
         this.categoryCallback = categoryCallback;
         this.context = context;

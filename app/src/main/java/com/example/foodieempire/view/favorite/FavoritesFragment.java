@@ -17,14 +17,18 @@ import com.example.foodieempire.controller.LocalBuilder;
 import com.example.foodieempire.databinding.FragmentFavoritesBinding;
 import com.example.foodieempire.model.pojo.Meal;
 import com.example.foodieempire.view.home.MealIDInterface;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class FavoritesFragment extends Fragment implements MealIDInterface, DeleteFavItem {
 
     FragmentFavoritesBinding binding;
     List<Meal> meal = new ArrayList<>();
+    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    String uid=firebaseAuth.getCurrentUser().getUid();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

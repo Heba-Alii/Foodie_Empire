@@ -15,7 +15,7 @@ import com.example.foodieempire.model.data.MealsDao;
 import com.example.foodieempire.model.pojo.Details;
 import com.example.foodieempire.model.pojo.Meal;
 
-@Database(entities = Meal.class, version =1)
+@Database(entities = Meal.class, version = 2)
 public abstract class LocalBuilder extends RoomDatabase {
     private static LocalBuilder dbInstance;
 
@@ -29,6 +29,4 @@ public abstract class LocalBuilder extends RoomDatabase {
         }
         return dbInstance;
     }
-
-
 }
