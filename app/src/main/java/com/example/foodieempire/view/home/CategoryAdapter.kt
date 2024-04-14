@@ -20,7 +20,6 @@ class CategoryAdapter(
             LayoutInflater.from(parent.context).inflate(R.layout.category_item, parent, false)
         return ViewHolder(view)
     }
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val category = categories[position]
         holder.textView.text = category.strCategory
