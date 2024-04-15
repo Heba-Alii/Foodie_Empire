@@ -41,7 +41,7 @@ class LoginFragment : Fragment() {
             }
 
             private fun writeToSharedPref(name: String) {
-                AppSharedPreference.writeToSharedPrefernce(activity, name)
+                activity?.let { AppSharedPreference.writeToSharedPrefernce(it, name) }
             }
         })
     }
